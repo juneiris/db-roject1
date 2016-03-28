@@ -1,0 +1,40 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Successful!</h1>
+
+  <!--<div>{{data}}</div>-->
+  <p>Other shops that you reserved:</p>
+  <div>
+  {% for r in rhist %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+      <div>{{r}}</div>
+    {% endfor %}
+  </div>
+
+ <p>See other people who also reserved this restaurant:</p>
+  <div>
+  {% for d in data %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+      <div>{{d}}</div>
+    {% endfor %}
+  </div>
+
+ <p><a href="/">Go back to home page</a></p>
+
+
+<!-- <form method="POST" action="/add">
+<p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
+</form> -->
+
+</body>
+
+
+</html>

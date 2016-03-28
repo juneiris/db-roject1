@@ -9,11 +9,23 @@
 
 <body>
   <h1>Choose your restuarant!</h1>
-
+<hr>
+{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
  <form method="POST" action="/restlist"> <!-- action="/add"> -->
-    <p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
-
-    <p>Filter: <select name="Type">
+    <p>Where are you?
+         <select name="Near">
+        <option value="none">Choose Area</option>
+        <option value="none">All</option>
+        <option value="10012">NYU/SOHO</option>
+        <option value="10019">Mid town West</option>
+        <option value="10025">Upper West Side</option>
+        <option value="10027">Morningside Height</option>
+        <option value="10036">Theater District</option>
+        </select>
+        <input type="submit" name="submit" value="Search nearby!">
+    </p>
+     <br>
+    <p>Or use the Filter: <select name="Type">
         <option value="none">Choose Shop Type</option>
         <option value="none">All</option>
         <option value="restaurants">Resturants</option>
@@ -43,21 +55,31 @@
         <option value="DESC">Sort rating from high to low</option>
         <option value="none">Sort rating from low to high</option>
      </select>
-     <input type="submit" value="Apply!">
+	<input type="submit" name="submit" value="Apply!">
+	<input type="submit" name="submit" value="Order History">
     </p>
  </form>
-
   <!--<div>{{data}}</div>-->
-
-  <div>
-    {% for n in data %}
-    <div><a href="{{n}}">{{n}}</a></div>
+   <div>
+    {% for n in shops %}
+      <div><a href="/another?shopid={{n.split('   ')[1]}}">{{n.split('   ')[0]}}</a></div>
     {% endfor %}
   </div>
 
-<p><a href="/another">Go to the other page</a></p>
-<p><a href="/login">Login</a></p>
-<p><a href="/createaccount">Create an account</a></p>
+  <div>
+    {% for n in data %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+      <div><a href="/another?shopid={{n.split('   ')[2]}}">{{n.split('   ')[0]+'     '+n.split('   ')[1]}}</a></div>
+    {% endfor %}
+  </div>
+<hr>
+<!--<p><a href="/another">Go to the other page</a></p>-->
+{% if uid == "111111" %}
+	<p><a href="/login">Login</a></p>
+	<p><a href="/createaccount">Create an account</a></p>
+{% else %}
+	<p><a href="/logout">Logout</a></p>
+{% endif %}
 
 
 <!-- <form method="POST" action="/add">

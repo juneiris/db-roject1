@@ -1,0 +1,97 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+<h1>Restaurant details</h1>
+<hr>
+ <div>
+    {% for n in data %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+
+      <div>Name:{{n.split('   ')[0]}}</div>
+      <br>
+      <div>Rating Score:{{n.split('   ')[1]}}</div>
+      <br>
+      <div>Business hour:{{n.split('   ')[2]}}-{{n.split('   ')[3]}}</div>
+      <br>
+      <div>Contact information (telephone):{{n.split('   ')[4]}}</div>
+      <br>
+      <div>Average Cost:{{n.split('   ')[5]}}</div>
+      <br>
+      <div>Cuisine Type:{{n.split('   ')[6]}}</div>
+      <br>
+      <div>Shop Type:{{n.split('   ')[7]}}</div>
+      <br>
+      <div>Take out?:{{n.split('   ')[8]}}</div>
+      <br>
+      <div>Delievery?:{{n.split('   ')[9]}}</div>
+      <br>
+    {% endfor %}
+
+  </div>
+  <div>
+    <p> Address:</p>
+  {% for a in address %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+      <div>{{a}}</div>
+    {% endfor %}
+  </div>
+
+
+
+{% if error %}
+<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+<form method="POST" action="/another?shopid={{shopid}}"> <!-- action="/add"> -->
+    <p>
+
+	<input type="submit" name="submit" value="Like it">
+    <br>
+    <hr>
+     <select name="Take_out_Delivery">
+        <option value="none">Take out OR Delivery</option>
+        <option value="takeout">Take Out</option>
+        <option value="delivery">Delivery</option>
+     </select>
+     <p>Delivery Address: aptnum:<input type="text" name="aptnum"> street:<input type="text" name="street">city:<input type="text" name="city">state:<input type="text" name="state">postcode:<input type="text" name="postcode"></p>
+     <p>Order Content: <input type="text" name="order_content"></p>
+        <input type="submit" name="submit" value="Place Order">
+    <hr>
+    <br>
+
+      Reserve Date:<input type="date" name="rdate">   Time(format:HH24:MI:SS):<input type="text" name="rtime">   Number of people:<input type="text" name="pnum">
+        <input type="submit" name="submit" value="Reserve it"><br>
+    <br>
+        Rate score:<input type="text" name="score"><input type="submit" name="submit" value="Rate it"><br>
+    <br>
+      <input type="text" name="comments"> <input type="submit" name="submit" value="Write a comment">
+    </p>
+ </form>
+<br>
+
+<div>
+  <p> Comments:</p>
+    {% for c in cmts %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+      <div>{{c}}</div>
+    {% endfor %}
+</div>
+<hr>
+{% if uid == "111111" %}
+	<p><a href="/login">Login</a ></p >
+	<p><a href="/createaccount">Create an account</a></p>
+{% else %}
+	<p><a href="/logout">Logout</a ></p >
+{% endif %}
+<p><a href="/">Go back to home page</a></p>
+
+</body>
+
+
+</html>
+

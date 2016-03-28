@@ -1,0 +1,29 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Place Order Successful!</h1>
+
+      <div><p>Order Number: {{ordernum}}</p></div>
+      <div><p>Order Time: {{ordertime}}</p></div>
+      <div><p>Shop Name: {{shopname}}</p></div>
+      <div><p>Order Type: {{type}}</p></div>
+{% if type == 'delivery' %}
+      <div><p>Delivery Address: {{address}}</p></div>
+{% endif %}
+      <div><p>Order Content: {{order_content}}</p></div>
+
+<p><a href="/another?shopid={{shopid}}">Make Another Order</a></p>
+<p><a href="/">Back to the Homepage</a></p>
+
+</body>
+
+
+</html>
+

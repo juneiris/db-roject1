@@ -11,12 +11,15 @@
 
   <h2>Create an account</h2>
   {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
-  <form action="{{ url_for('login') }}" method=post>
+  <form action="{{ url_for('create_account') }}" method=post>
+    <p>Note: User name must be longer than 3 characters and cannot contain ' ( ) " ;.</p>
     <dl>
       <dt>Username:
       <dd><input type=text name=username>
       <dt>Password:
-      <dd><input type=password name=password>
+      <dd><input type=password name=password1>
+      <dt>Confirm Password:
+      <dd><input type=password name=password2>
       <dd><input type=submit value=Create>
     </dl>
   </form>

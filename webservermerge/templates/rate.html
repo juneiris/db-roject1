@@ -1,6 +1,6 @@
 <html>
   <style>
-    body{
+    body{ 
       font-size: 15pt;
       font-family: arial;
     }
@@ -8,19 +8,20 @@
 
 
 <body>
-  <h1>Choose your restuarant!</h1>
+  <h1>Successful!</h1>
 
   <!--<div>{{data}}</div>-->
+  <p>You rate the shop:</p>{{score}}
 
+ <p>See other people who also rated this restaurant:</p>
   <div>
-    {% for n in data %}
-    <div>{{n}}</div>
+  {% for d in data %}
+      <!--<div><a href="/another">{{n}}</a></div>-->
+      <div>{{d}}</div>
     {% endfor %}
   </div>
 
-<p><a href="/another">Go to the other page</a></p>
-<p><a href="/login">Login</a></p>
-<p><a href="/createaccount">Create an account</a></p>
+<p><a href="/">Go back to home page</a></p>
 
 
 <!-- <form method="POST" action="/add">
@@ -31,4 +32,3 @@
 
 
 </html>
-
